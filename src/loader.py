@@ -5,13 +5,13 @@ import io
 import shutil
 import copy
 from datetime import datetime
-from pick import pick
+# from pick import pick
 from time import sleep
 
 
 
 # Create wrapper classes for using slack_sdk in place of slacker
-class SlackDataLoader:
+class NewsDataLoader:
     '''
     Slack exported data IO class.
 
@@ -37,7 +37,7 @@ class SlackDataLoader:
         self.users = self.get_ussers()
     
 
-    def get_users(self):
+    def get_news(self):
         '''
         write a function to get all the users from the json file
         '''
@@ -46,7 +46,7 @@ class SlackDataLoader:
 
         return users
     
-    def get_channels(self):
+    def get_traffic(self):
         '''
         write a function to get all the channels from the json file
         '''
@@ -55,29 +55,8 @@ class SlackDataLoader:
 
         return channels
 
-    def get_channel_messages(self, channel_name):
-        '''
-        write a function to get all the messages from a channel
-        
-        '''
-
-    # 
-    def get_user_map(self):
-        '''
-        write a function to get a map between user id and user name
-        '''
-        userNamesById = {}
-        userIdsByName = {}
-        for user in self.users:
-            userNamesById[user['id']] = user['name']
-            userIdsByName[user['name']] = user['id']
-        return userNamesById, userIdsByName        
-
-
-
-
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Export Slack history')
+    parser = argparse.ArgumentParser(description='Export News history')
 
     
     parser.add_argument('--zip', help="Name of a zip file to import")
